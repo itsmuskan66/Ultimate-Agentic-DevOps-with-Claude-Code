@@ -1,30 +1,33 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+## 1. Project Overview
+This is a static marketing/portfolio website for [briefly describe — e.g. "a DevOps training program"]. It consists of plain HTML pages (`index.html`, `privacy.html`, `terms.html`), a single stylesheet (`style.css`), and image assets in `images/`. There is no backend, no database, and no build process.
 
-## Project Overview
+## 2. Tech Stack & Conventions
+- Pure HTML5 and CSS3 only.
+- No JavaScript frameworks or libraries (no React, Vue, Angular, jQuery).
+- No build tools (no Webpack, Vite, npm bundlers).
+- No CSS preprocessors (no Sass/Less) — plain CSS only.
+- Keep the site fully static and dependency-free.
 
-Static HTML/CSS portfolio website deployed to AWS using S3 and CloudFront, provisioned with Terraform, and automated via GitHub Actions.
+## 3. File Structure
+- `index.html` — homepage
+- `privacy.html` — privacy policy page
+- `terms.html` — terms of service page
+- `style.css` — single shared stylesheet for all pages
+- `images/` — all image assets used across the site
+- `README.md` — project documentation
 
-## Architecture
+## 4. Deployment
+This project is deployed to AWS using a static hosting setup:
+- **Amazon S3** — hosts the static site files (HTML, CSS, images).
+- **Amazon CloudFront** — serves as the CDN in front of S3 for caching and HTTPS.
+- **Terraform** — used to provision and manage the S3 bucket and CloudFront distribution as infrastructure-as-code.
+Do not suggest alternative hosting (e.g. Vercel, Netlify, EC2) unless explicitly asked — this project's standard deployment path is S3 + CloudFront via Terraform.
 
-- Pure HTML5 and CSS3
-- No JavaScript
-- No build step
-- No framework
-
-## Commands
-
-- terraform init
-- terraform plan
-- terraform apply
-
-## Conventions
-
-- All infrastructure changes go through Terraform — never modify AWS resources manually
-- No JavaScript in this project
-- CSS uses mobile-first approach with breakpoints at 900px, 768px, and 600px
-
-## Safety
-
-Never put secrets in this file. No API keys, passwords, or AWS credentials.
+## 5. Rules / Do's and Don'ts
+- Do not add React, Vue, Angular, or any JavaScript framework unless the user explicitly requests significant interactivity and approves the architectural change.
+- Do not introduce a build step or package manager (npm/yarn) — keep the project buildless.
+- Keep all pages consistent in style by reusing `style.css`; do not create page-specific stylesheets.
+- When suggesting deployment, always default to the S3 + CloudFront + Terraform setup described above.
+- Preserve existing file names and structure unless the user asks to reorganize.
