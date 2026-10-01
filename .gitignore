@@ -1,4 +1,3 @@
-.terraform
-.claude/settings.local.json
-.claude/agent-memory/
-.claude/deploy.log
+ .terraformterraform/.terraform/
+*.tfstate
+*.tfstate.backup

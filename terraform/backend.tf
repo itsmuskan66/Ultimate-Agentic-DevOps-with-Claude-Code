@@ -1,31 +1,24 @@
-# S3 backend configuration for Terraform state
+# Terraform State Backend Configuration
 #
-# IMPORTANT: Follow these steps to use the S3 backend:
+# To use this S3 backend for storing Terraform state:
 #
-# 1. First run: `terraform init`
-#    This initializes Terraform with local state
+# 1. First, run: terraform init
+#    This will initialize Terraform without a backend (using local state)
 #
-# 2. Run: `terraform apply`
-#    This creates the S3 bucket and CloudFront resources
+# 2. Create the state bucket and DynamoDB table manually or with Terraform
+#    Make sure the bucket name and region match your setup
 #
-# 3. Create an S3 bucket for Terraform state (if not already created)
-#    You can do this manually via AWS Console or with Terraform
+# 3. Uncomment the terraform block below
 #
-# 4. Uncomment the terraform block below and update the bucket name
+# 4. Then run: terraform init -migrate-state
+#    This will migrate your local state to the S3 backend
 #
-# 5. Run: `terraform init -migrate-state`
-#    This will prompt you to migrate the existing local state to the S3 backend
-#
-# After these steps, your Terraform state will be stored remotely in S3
-
-/*
-terraform {
-  backend "s3" {
-    bucket         = "your-terraform-state-bucket"
-    key            = "portfolio-site/terraform.tfstate"
-    region         = "ap-south-1"
-    encrypt        = true
-    dynamodb_table = "terraform-locks"
-  }
-}
-*/
+# terraform {
+#   backend "s3" {
+#     bucket         = "portfolio-site-terraform-state-ap-south-1"
+#     key            = "prod/terraform.tfstate"
+#     region         = "ap-south-1"
+#     encrypt        = true
+#     dynamodb_table = "terraform-locks"
+#   }
+# }
