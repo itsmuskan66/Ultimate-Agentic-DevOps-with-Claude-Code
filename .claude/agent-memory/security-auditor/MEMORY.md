@@ -1,0 +1,1 @@
+- [Terraform baseline](project_terraform_baseline.md) — known gaps in S3+CloudFront stack and malformed .gitignore (2026-10-02)

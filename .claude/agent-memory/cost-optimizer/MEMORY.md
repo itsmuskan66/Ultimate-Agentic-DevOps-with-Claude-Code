@@ -1,0 +1,3 @@
+- [S3 Versioning Cost Driver](s3-versioning-cost.md) — Versioning enabled on static site bucket, accumulating version storage costs unnecessarily
+- [CloudFront Price Class Optimization](cloudfront-price-class.md) — PriceClass_200 can be reduced to PriceClass_100 for static content
+- [S3 Lifecycle Policy Missing](s3-lifecycle-missing.md) — No lifecycle rules to expire old object versions or archive infrequent data
